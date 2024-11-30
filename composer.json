@@ -1,0 +1,32 @@
+{
+    "name": "hakimrazalan/chip-php-sdk",
+    "description": "PHP Agnostic to work with CHIP Asia API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Chip\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hakim Razalan",
+            "email": "hakim.razalan@gmail.com"
+        }
+    ],
+    "require": {
+        "json-mapper/json-mapper": "^2.22",
+        "laravie/codex": "^6.2",
+        "symfony/http-client": "^7.2",
+        "laravie/codex-filter": "^2.1",
+        "spatie/ray": "^1.41"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "require-dev": {
+        "php-http/guzzle7-adapter": "^1.1"
+    }
+}
