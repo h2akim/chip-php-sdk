@@ -14,8 +14,17 @@ class Collect extends \Laravie\Codex\Client
         $this->http = $http;
     }
 
+    protected $supportedVersions = [
+        'v1' => 'Base'
+    ];
+
+    public function account()
+    {
+        return $this->uses('Account');
+    }
+
     protected function getResourceNamespace(): string
     {
-        return __NAMESPACE__;
+        return sprintf('%s\%s', __NAMESPACE__, 'Services\\Collect');
     }
 }

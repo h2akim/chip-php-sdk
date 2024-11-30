@@ -9,4 +9,9 @@ use Laravie\Codex\Filter\WithSanitizer;
 class Request extends \Laravie\Codex\Request implements Filterable
 {
     use WithSanitizer;
+
+    // protected function sanitizeWith(): Sanitizer
+    // {
+    //     return new Sanitizer();
+    // }
 }
