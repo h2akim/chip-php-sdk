@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Composer
+#### Composer
 
 To install through composer by using the following command:
 
