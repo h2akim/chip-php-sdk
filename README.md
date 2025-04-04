@@ -13,6 +13,9 @@ To install through composer by using the following command:
 Refer [PHP-HTTP Clients & Adapters](http://docs.php-http.org/en/latest/clients.html) for other supported clients and adapters.
 
 #### Usage
+##### Creating client
+
+To create CHIP client, you need to know which service you want to use - Collect / Send. Use the following codes:
 
 ```
 use Chip\Client;
