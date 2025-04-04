@@ -17,6 +17,9 @@ Refer [PHP-HTTP Clients & Adapters](http://docs.php-http.org/en/latest/clients.h
 ```
 use Chip\Client;
 
+// To use collect
 $collect = Client::makeCollect("myApiKey");
-$collect->billingTemplate()->list();
+
+// To use send
+$collect = Client::makeSend("myApiKey", "secretKey");
 ```
