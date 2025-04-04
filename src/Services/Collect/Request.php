@@ -3,13 +3,11 @@
 namespace Chip\Services\Collect;
 
 use Chip\Services\Collect\Response;
-use Chip\Services\Collect\Sanitizer as CollectSanitizer;
 use Laravie\Codex\Contracts\Endpoint;
 use Laravie\Codex\Contracts\Filterable;
 use Laravie\Codex\Contracts\Response as ContractsResponse;
 use Laravie\Codex\Filter\Sanitizer;
 use Laravie\Codex\Filter\WithSanitizer;
-use Laravie\Codex\Support\Versioning;
 use Psr\Http\Message\ResponseInterface;
 
 /**

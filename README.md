@@ -23,3 +23,16 @@ $collect = Client::makeCollect("myApiKey");
 // To use Send
 $collect = Client::makeSend("myApiKey", "secretKey");
 ```
+
+Alternatively, you could manually configure `Http\Client\Common\HttpMethodsClient`
+
+```
+use Chip\Client;
+
+// To use Collect
+$http = Laravie\Codex\Discovery::client();
+$collect = Client::makeCollect("myApiKey", $http);
+
+// To use Send
+$collect = Client::makeSend("myApiKey", "secretKey", $http);
+```

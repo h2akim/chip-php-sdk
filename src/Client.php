@@ -2,17 +2,18 @@
 
 namespace Chip;
 
+use Http\Client\Common\HttpMethodsClient;
 use Laravie\Codex\Discovery;
 
 class Client
 {
-    public static function makeCollect(string $apiKey)
+    public static function makeCollect(string $apiKey, ?HttpMethodsClient $httpClient)
     {
-        return new Collect(Discovery::client(), $apiKey);
+        return new Collect($httpClient ?? Discovery::client(), $apiKey);
     }
 
-    public static function makeSend(string $apiKey, ?string $apiSecret)
+    public static function makeSend(string $apiKey, ?string $apiSecret, ?HttpMethodsClient $httpClient)
     {
-        return new Send(Discovery::client(), $apiKey, $apiSecret);
+        return new Send($httpClient ?? Discovery::client(), $apiKey, $apiSecret);
     }
 }
