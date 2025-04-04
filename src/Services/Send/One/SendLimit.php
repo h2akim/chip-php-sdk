@@ -1,6 +1,6 @@
 <?php
 
-namespace Chip\Services\Send\Base;
+namespace Chip\Services\Send\One;
 
 use Chip\Request;
 
