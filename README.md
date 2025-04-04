@@ -24,7 +24,7 @@ $collect = Client::makeCollect("myApiKey");
 $collect = Client::makeSend("myApiKey", "secretKey");
 ```
 
-Alternatively, you could manually configure `Http\Client\Common\HttpMethodsClient`
+Alternatively, you could configure `Http\Client\Common\HttpMethodsClient` manually
 
 ```
 use Chip\Client;
