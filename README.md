@@ -10,7 +10,7 @@ To install through composer by using the following command:
 
 #### HTTP Adapter
 
-You might want to use other adapter that implements `php-http/client-implementation`. Refer [Clients & Adapters](http://docs.php-http.org/en/latest/clients.html)
+Refer [PHP-HTTP Clients & Adapters](http://docs.php-http.org/en/latest/clients.html) for other supported clients and adapters.
 
 #### Usage
 
