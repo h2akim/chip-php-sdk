@@ -1,4 +1,4 @@
-**This library is still WIP**
+# PHP framework agnostic to work with CHIP API
 
 ## Installation
 
@@ -38,5 +38,33 @@ $http = Laravie\Codex\Discovery::client();
 $collect = Client::makeCollect("myApiKey", $http);
 
 // To use Send
-$collect = Client::makeSend("myApiKey", "secretKey", $http);
+$send = Client::makeSend("myApiKey", "secretKey", $http);
+```
+
+### Use Sandbox
+
+Sandbox options is only supported for **Send** API. To use sandbox environment:
+```
+$send->useSandbox();
+```
+
+# Usages
+## Collect
+### Purchases
+
+#### Create Purchase
+
+New purchase can be created by following code
+
+Refer: [Create Purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/create)
+
+```
+$response = $collect->create([
+    "client" => [
+        "email" => "test@test.com",
+    ],
+    ...
+])
+
+$response->toArray();
 ```
