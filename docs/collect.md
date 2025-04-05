@@ -1,7 +1,7 @@
 # Collect
 
 - [Purchases](collect/purchases.md)
-- [Payment sethods](collect/payment-method.md)
+- [Payment methods](collect/payment-method.md)
 - [Billings](collect/billing-template.md)
 - [Clients](collect/client.md)
 - [Webhooks](collect/webhook.md)
