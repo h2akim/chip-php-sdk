@@ -37,7 +37,7 @@ $response->toArray();
 
 Cancel a pending purchase
 
-Refer: [Cancel a pending purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/cancel)
+Refer: [API Docs](https://docs.chip-in.asia/chip-collect/api-reference/purchases/cancel)
 
 ```
 $response = $collect->cancel('cb16ea9a-b4f3-42d8-bb93-8f3591b721ac');
