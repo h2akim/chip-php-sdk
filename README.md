@@ -49,22 +49,7 @@ $send->useSandbox();
 ```
 
 # Usages
-## Collect
-### Purchases
 
-#### Create Purchase
+For Collect &rarr; [Here](docs/collect.md)
 
-New purchase can be created by following code
-
-Refer: [Create Purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/create)
-
-```
-$response = $collect->create([
-    "client" => [
-        "email" => "test@test.com",
-    ],
-    ...
-])
-
-$response->toArray();
-```
+For Send &rarr; [Here](docs/send.md)
