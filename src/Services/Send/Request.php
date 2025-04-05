@@ -22,8 +22,6 @@ class Request extends \Laravie\Codex\Request implements Filterable
         $epoch = time();
 
         $headers = [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
             'epoch' => $epoch,
             'checksum' => Checksum::create($epoch, $this->client->getApiKey(), $this->client->getSecretKey()),
         ];

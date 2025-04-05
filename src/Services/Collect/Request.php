@@ -33,11 +33,6 @@ class Request extends \Laravie\Codex\Request implements Filterable
 
     protected function getApiHeaders(): array
     {
-        $headers = [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-        ];
-
         if (! \is_null($this->client->getApiKey())) {
             $headers['Authorization'] = 'Bearer ' . $this->client->getApiKey();
         }
