@@ -11,7 +11,7 @@ class Send extends \Laravie\Codex\Client
      *
      * @var string
      */
-    protected $apiEndpoint = 'https://staging-api.chip-in.asia/api';
+    protected $apiEndpoint = 'https://api.chip-in.asia/api';
 
     public function __construct(
         HttpClient $http,
@@ -24,6 +24,11 @@ class Send extends \Laravie\Codex\Client
     protected $supportedVersions = [
         'v1' => 'One'
     ];
+
+    public function useSandbox(): self
+    {
+        return $this->useCustomApiEndpoint('https://staging-api.chip-in.asia/api');
+    }
 
     public function account(?string $version = null): Services\Send\Contracts\Account
     {
