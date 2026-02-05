@@ -6,7 +6,7 @@ use Chip\Services\Collect\Request;
 use Laravie\Codex\Concerns\Request\Json;
 use Laravie\Codex\Contracts\Response;
 
-class Purchase extends Request implements \Chip\Services\Collect\Contracts\Client
+class Purchase extends Request implements \Chip\Services\Collect\Contracts\Purchase
 {
     use Json;
 
@@ -32,11 +32,14 @@ class Purchase extends Request implements \Chip\Services\Collect\Contracts\Clien
         return $this->sendJson('POST', "purchases/{$id}/cancel/", $this->getApiHeaders());
     }
 
-    public function capture(string $id, int $amount): Response
+    public function capture(string $id, ?int $amount = null): Response
     {
-        return $this->sendJson('POST', "purchases/{$id}/capture/", $this->getApiHeaders(), [
-            'amount' => $amount,
-        ]);
+        return $this->sendJson(
+            'POST',
+            "purchases/{$id}/capture/",
+            $this->getApiHeaders(),
+            $amount ? ['amount' => $amount] : []
+        );
     }
 
     public function charge(string $id, string $recurringToken): Response
