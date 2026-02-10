@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
 
 class Collect extends \Laravie\Codex\Client
 {
+    protected string $apiKey;
     /**
      * Chip Asia API endpoint.
      *
@@ -22,13 +25,22 @@ class Collect extends \Laravie\Codex\Client
 
     public function __construct(
         HttpClient $http,
-        protected string $apiKey,
+        Config $config,
     ) {
         $this->http = $http;
+        $this->apiKey = $config->apiKey;
+
+        if ($config->baseUri !== null) {
+            $this->apiEndpoint = rtrim($config->baseUri, '/');
+        }
+
+        if ($config->version !== null) {
+            $this->defaultVersion = $config->version;
+        }
     }
 
     protected $supportedVersions = [
-        'v1' => 'One'
+        'v1' => 'One',
     ];
 
     public function account(?string $version = null): Services\Collect\Contracts\Account

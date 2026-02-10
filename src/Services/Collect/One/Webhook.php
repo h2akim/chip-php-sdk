@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;
@@ -15,6 +17,11 @@ class Webhook extends Request implements \Chip\Services\Collect\Contracts\Webhoo
     public function all(): Response
     {
         return $this->sendJson('GET', 'webhooks/', $this->getApiHeaders());
+    }
+
+    public function list(): Response
+    {
+        return $this->all();
     }
 
     public function get(string $id): Response

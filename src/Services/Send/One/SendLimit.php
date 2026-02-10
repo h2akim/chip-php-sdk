@@ -1,28 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Send\One;
 
-use Chip\Request;
+use Chip\Services\Send\Request;
+use Laravie\Codex\Concerns\Request\Json;
+use Laravie\Codex\Contracts\Response;
 
-class SendLimit extends Request
+class SendLimit extends Request implements \Chip\Services\Send\Contracts\SendLimit
 {
-    public function increaseBudgetAllocation()
+    use Json;
+
+    public function increaseBudgetAllocation(array $body = []): Response
     {
-        return $this->send('POST', 'send_limits');
+        return $this->sendJson('POST', 'send_limits', $this->getApiHeaders(), $body);
     }
 
-    public function get(string $id)
+    public function get(string $id): Response
     {
-        return $this->send('GET', "send_limits/{$id}");
+        return $this->sendJson('GET', "send_limits/{$id}", $this->getApiHeaders());
     }
 
-    public function list()
+    public function list(): Response
     {
-        return $this->send('GET', 'send_limits');
+        return $this->sendJson('GET', 'send_limits', $this->getApiHeaders());
     }
 
-    public function resendApprovalRequest(string $id)
+    public function resendApprovalRequest(string $id): Response
     {
-        return $this->send('POST', "send_limits/{$id}/resend_approval_requests");
+        return $this->sendJson('POST', "send_limits/{$id}/resend_approval_requests", $this->getApiHeaders());
     }
 }

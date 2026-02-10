@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;

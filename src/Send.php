@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
@@ -13,21 +15,36 @@ class Send extends \Laravie\Codex\Client
      */
     protected $apiEndpoint = 'https://api.chip-in.asia/api';
 
+    protected string $apiKey;
+    protected ?string $apiSecret = null;
+
     public function __construct(
         HttpClient $http,
-        protected string $apiKey,
-        protected ?string $apiSecret = null
+        Config $config,
     ) {
         $this->http = $http;
+        $this->apiKey = $config->apiKey;
+        $this->apiSecret = $config->apiSecret;
+
+        if ($config->sandbox) {
+            $this->useSandbox();
+        }
+
+        if ($config->baseUri !== null) {
+            $this->apiEndpoint = rtrim($config->baseUri, '/');
+        }
     }
 
     protected $supportedVersions = [
-        'v1' => 'One'
+        'v1' => 'One',
     ];
 
-    public function useSandbox(): self
+    public function useSandbox(bool $enabled = true): self
     {
-        return $this->useCustomApiEndpoint('https://staging-api.chip-in.asia/api');
+        $endpoint = $enabled
+            ? 'https://staging-api.chip-in.asia/api'
+            : 'https://api.chip-in.asia/api';
+        return $this->useCustomApiEndpoint($endpoint);
     }
 
     public function account(?string $version = null): Services\Send\Contracts\Account

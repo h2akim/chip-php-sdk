@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;
@@ -12,12 +14,17 @@ class PaymentMethod extends Request implements \Chip\Services\Collect\Contracts\
 
     protected $version = 'v1';
 
-    public function sendJson(string $brandId, string $currency = 'MYR', array $body): Response
+    public function all(string $brandId, array $query = [], string $currency = 'MYR'): Response
     {
-        return $this->send('GET', 'payment_methods/', $this->getApiHeaders(), [
+        return $this->sendJson('GET', 'payment_methods/', $this->getApiHeaders(), [
             'brand_id' => $brandId,
             'currency' => $currency,
-            ...$body
+            ...$query
         ]);
+    }
+
+    public function list(string $brandId, array $query = [], string $currency = 'MYR'): Response
+    {
+        return $this->all($brandId, $query, $currency);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Send\One;
 
 use Chip\Services\Send\Request;
@@ -13,6 +15,6 @@ class Account extends Request implements \Chip\Services\Send\Contracts\Account
 
     public function list(): Response
     {
-        return $this->send('GET', "send/accounts/", $this->getApiHeaders());
+        return $this->sendJson('GET', "send/accounts/", $this->getApiHeaders());
     }
 }

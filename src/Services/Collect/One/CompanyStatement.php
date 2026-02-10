@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;
@@ -17,7 +19,12 @@ class CompanyStatement extends Request implements \Chip\Services\Collect\Contrac
         return $this->sendJson('GET', "company_statements/", $this->getApiHeaders());
     }
 
-    public function schedule(string $currency = 'MYR', array $query, array $body): Response
+    public function list(): Response
+    {
+        return $this->all();
+    }
+
+    public function schedule(array $query = [], array $body = [], string $currency = 'MYR'): Response
     {
         $query = http_build_query([
             'currency' => $currency,
@@ -28,11 +35,11 @@ class CompanyStatement extends Request implements \Chip\Services\Collect\Contrac
 
     public function get(string $id): Response
     {
-        return $this->sendJson('GET', "company_statements/{$id}", $this->getApiHeaders());
+        return $this->sendJson('GET', "company_statements/{$id}/", $this->getApiHeaders());
     }
 
     public function cancel(string $id): Response
     {
-        return $this->sendJson('POST', "company_statements/{$id}/cancel", $this->getApiHeaders());
+        return $this->sendJson('POST', "company_statements/{$id}/cancel/", $this->getApiHeaders());
     }
 }

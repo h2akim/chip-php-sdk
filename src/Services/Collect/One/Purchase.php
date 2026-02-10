@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;
@@ -29,7 +31,7 @@ class Purchase extends Request implements \Chip\Services\Collect\Contracts\Purch
 
     public function release(string $id): Response
     {
-        return $this->sendJson('POST', "purchases/{$id}/cancel/", $this->getApiHeaders());
+        return $this->sendJson('POST', "purchases/{$id}/release/", $this->getApiHeaders());
     }
 
     public function capture(string $id, ?int $amount = null): Response
@@ -61,11 +63,13 @@ class Purchase extends Request implements \Chip\Services\Collect\Contracts\Purch
         ]);
     }
 
-    public function markAsPaid(string $id, ?int $paidOn): Response
+    public function markAsPaid(string $id, ?int $paidOn = null): Response
     {
         $body = [];
-        if ($paidOn) $body['paid_on'] = $paidOn;
-        return $this->sendJson('POST', "purchases/{$id}/cancel/", $this->getApiHeaders(), $body);
+        if ($paidOn) {
+            $body['paid_on'] = $paidOn;
+        }
+        return $this->sendJson('POST', "purchases/{$id}/mark_as_paid/", $this->getApiHeaders(), $body);
     }
 
     public function resendInvoice(string $id): Response

@@ -1,21 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect;
 
-use Chip\Services\Collect\Response;
+use Chip\Services\Common\BaseRequest;
 use Laravie\Codex\Contracts\Endpoint;
-use Laravie\Codex\Contracts\Filterable;
-use Laravie\Codex\Contracts\Response as ContractsResponse;
-use Laravie\Codex\Filter\Sanitizer;
-use Laravie\Codex\Filter\WithSanitizer;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @property \Chip\Collect $client
  */
-class Request extends \Laravie\Codex\Request implements Filterable
+class Request extends BaseRequest
 {
-    use WithSanitizer;
     
     /**
      * Get URI Endpoint.
@@ -33,25 +29,11 @@ class Request extends \Laravie\Codex\Request implements Filterable
 
     protected function getApiHeaders(): array
     {
+        $headers = [];
         if (! \is_null($this->client->getApiKey())) {
             $headers['Authorization'] = 'Bearer ' . $this->client->getApiKey();
         }
 
         return $headers;
-    }
-
-    /**
-     * Resolve reponse class
-     * @param ResponseInterface $message 
-     * @return Response 
-     */
-    protected function responseWith(ResponseInterface $message): ContractsResponse
-    {
-        return new Response($message);
-    }
-
-    protected function sanitizeWith(): Sanitizer
-    {
-        return new Sanitizer();
     }
 }

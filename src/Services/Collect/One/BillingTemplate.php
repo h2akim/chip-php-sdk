@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect\One;
 
 use Chip\Services\Collect\Request;
@@ -17,6 +19,11 @@ class BillingTemplate extends Request implements \Chip\Services\Collect\Contract
         return $this->sendJson('GET', 'billing_templates/', $this->getApiHeaders());
     }
 
+    public function list(): Response
+    {
+        return $this->all();
+    }
+
     public function create(array $body): Response
     {
         return $this->sendJson('POST', 'billing_templates/', $this->getApiHeaders(), $body);
@@ -27,9 +34,9 @@ class BillingTemplate extends Request implements \Chip\Services\Collect\Contract
         return $this->sendJson('GET', "billing_templates/{$id}/", $this->getApiHeaders());
     }
 
-    public function update(string $id): Response
+    public function update(string $id, array $body): Response
     {
-        return $this->sendJson('PUT', "billing_templates/{$id}/", $this->getApiHeaders());
+        return $this->sendJson('PUT', "billing_templates/{$id}/", $this->getApiHeaders(), $body);
     }
 
     public function destroy(string $id): Response

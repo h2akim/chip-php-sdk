@@ -1,6 +1,6 @@
 {
     "name": "hakimrazalan/chip-php-sdk",
-    "description": "PHP Agnostic to work with CHIP Asia API",
+    "description": "PHP framework agnostic to work with CHIP Asia API",
     "type": "library",
     "license": "MIT",
     "autoload": {

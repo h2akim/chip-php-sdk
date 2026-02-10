@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Send\One;
 
 use Chip\Services\Send\Request;

@@ -1,24 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Send;
 
-use Chip\Services\Send\Response;
-use Laravie\Codex\Contracts\Endpoint;
-use Laravie\Codex\Contracts\Filterable;
-use Laravie\Codex\Contracts\Response as ContractsResponse;
-use Laravie\Codex\Filter\Sanitizer;
-use Laravie\Codex\Filter\WithSanitizer;
-use Psr\Http\Message\ResponseInterface;
+use Chip\Exceptions\InvalidArgumentException;
+use Chip\Services\Common\BaseRequest;
 
 /**
  * @property \Chip\Send $client
  */
-class Request extends \Laravie\Codex\Request implements Filterable
+class Request extends BaseRequest
 {
-    use WithSanitizer;
 
     protected function getApiHeaders(): array
     {
+        if ($this->client->getApiKey() === null) {
+            throw new InvalidArgumentException('API key is required for Send requests.');
+        }
+        if ($this->client->getSecretKey() === null) {
+            throw new InvalidArgumentException('API secret is required for Send requests.');
+        }
+
         $epoch = time();
 
         $headers = [
@@ -31,20 +34,5 @@ class Request extends \Laravie\Codex\Request implements Filterable
         }
 
         return $headers;
-    }
-
-    /**
-     * Resolve reponse class
-     * @param ResponseInterface $message 
-     * @return Response 
-     */
-    protected function responseWith(ResponseInterface $message): ContractsResponse
-    {
-        return new Response($message);
-    }
-
-    protected function sanitizeWith(): Sanitizer
-    {
-        return new Sanitizer();
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chip\Services\Collect;
 
-use Laravie\Codex\Contracts\Filterable;
-use Laravie\Codex\Filter\WithSanitizer;
+use Chip\Services\Common\BaseResponse;
 
-class Response extends \Laravie\Codex\Response implements Filterable
+class Response extends BaseResponse
 {
-    use WithSanitizer;
 }

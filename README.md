@@ -25,7 +25,23 @@ use Chip\Client;
 $collect = Client::makeCollect("myApiKey");
 
 // To use Send
-$collect = Client::makeSend("myApiKey", "secretKey");
+$send = Client::makeSend("myApiKey", "secretKey");
+```
+
+You can also use a config object to make the client easier to extend:
+
+```
+use Chip\Client;
+use Chip\Config;
+
+$collect = Client::makeCollect(
+    Config::collect("myApiKey")->withVersion("v1")
+);
+
+$send = Client::makeSend(
+    Config::send("myApiKey", "secretKey")
+        ->withSandbox(true)
+);
 ```
 
 Alternatively, you could configure `Http\Client\Common\HttpMethodsClient` manually

@@ -1,33 +1,39 @@
 <?php
 
-namespace Chip\Services\Send\One\One;
+declare(strict_types=1);
 
-use Chip\Request;
+namespace Chip\Services\Send\One;
 
-class Webhook extends Request
+use Chip\Services\Send\Request;
+use Laravie\Codex\Concerns\Request\Json;
+use Laravie\Codex\Contracts\Response;
+
+class Webhook extends Request implements \Chip\Services\Send\Contracts\Webhook
 {
-    public function list()
+    use Json;
+
+    public function list(): Response
     {
-        return $this->send('GET', 'webhooks');
+        return $this->sendJson('GET', 'webhooks', $this->getApiHeaders());
     }
 
-    public function get(string $id)
+    public function get(string $id): Response
     {
-        return $this->send('GET', "webhooks/{$id}");
+        return $this->sendJson('GET', "webhooks/{$id}", $this->getApiHeaders());
     }
 
-    public function create()
+    public function create(array $body): Response
     {
-        return $this->send('POST', 'webhooks');
+        return $this->sendJson('POST', 'webhooks', $this->getApiHeaders(), $body);
     }
 
-    public function update(string $id)
+    public function update(string $id, array $body): Response
     {
-        return $this->send('PATCH', "webhooks/{$id}");
+        return $this->sendJson('PATCH', "webhooks/{$id}", $this->getApiHeaders(), $body);
     }
-    
-    public function destroy(string $id)
+
+    public function destroy(string $id): Response
     {
-        return $this->send('DELETE', "webhooks/{$id}");
+        return $this->sendJson('DELETE', "webhooks/{$id}", $this->getApiHeaders());
     }
 }
