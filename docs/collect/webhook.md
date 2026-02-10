@@ -1,18 +1,37 @@
 ### Webhook
 
-#### Create Purchase
-
-New purchase can be created by following code
-
-Refer: [Create Purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/create)
+#### List
 
 ```
-$response = $collect->create([
-    "client" => [
-        "email" => "test@test.com",
-    ],
-    ...
-])
-
+$response = $collect->webhook()->list();
 $response->toArray();
+```
+
+#### Get
+
+```
+$response = $collect->webhook()->get('webhook-id');
+```
+
+#### Create
+
+```
+$response = $collect->webhook()->create([
+    "url" => "https://example.com/webhooks",
+    "events" => ["purchase.paid"],
+]);
+```
+
+#### Update
+
+```
+$response = $collect->webhook()->update('webhook-id', [
+    "events" => ["purchase.paid", "purchase.refunded"],
+]);
+```
+
+#### Delete
+
+```
+$response = $collect->webhook()->destroy('webhook-id');
 ```

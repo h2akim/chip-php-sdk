@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Chip;
 
-use Http\Client\Common\HttpMethodsClient;
+use Http\Client\Common\HttpMethodsClientInterface;
 use Laravie\Codex\Discovery;
 
 class Client
 {
-    public static function makeCollect(string|Config $apiKey, ?HttpMethodsClient $httpClient = null): Collect
+    public static function makeCollect(string|Config $apiKey, ?HttpMethodsClientInterface $httpClient = null): Collect
     {
         $config = $apiKey instanceof Config ? $apiKey : Config::collect($apiKey);
         return new Collect($httpClient ?? Discovery::client(), $config);
@@ -18,7 +18,7 @@ class Client
     public static function makeSend(
         string|Config $apiKey,
         ?string $apiSecret = null,
-        ?HttpMethodsClient $httpClient = null
+        ?HttpMethodsClientInterface $httpClient = null
     ): Send
     {
         if ($apiKey instanceof Config) {

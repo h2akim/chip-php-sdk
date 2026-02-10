@@ -1,18 +1,22 @@
 ### Payment Method
 
-#### Create Purchase
+List payment methods for a brand.
 
-New purchase can be created by following code
-
-Refer: [Create Purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/create)
+Refer: [API Docs](https://docs.chip-in.asia/chip-collect/api-reference/payment-methods/list)
 
 ```
-$response = $collect->create([
-    "client" => [
-        "email" => "test@test.com",
-    ],
-    ...
-])
+$brandId = 'brand_123';
+$response = $collect->paymentMethod()->all($brandId);
 
 $response->toArray();
+```
+
+With filters:
+
+```
+$brandId = 'brand_123';
+$query = [
+    'type' => 'card',
+];
+$response = $collect->paymentMethod()->list($brandId, $query, 'MYR');
 ```

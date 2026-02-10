@@ -8,6 +8,11 @@
             "Chip\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Chip\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Hakim Razalan",
@@ -15,11 +20,14 @@
         }
     ],
     "require": {
+        "php": "^8.2",
         "json-mapper/json-mapper": "^2.22",
-        "laravie/codex": "^6.2",
+        
         "symfony/http-client": "^7.2",
-        "laravie/codex-filter": "^2.1",
-        "spatie/ray": "^1.41"
+        
+        "spatie/ray": "^1.41",
+        "laravie/codex": "^5.3",
+        "laravie/codex-filter": "^1.2"
     },
     "config": {
         "allow-plugins": {
@@ -27,6 +35,7 @@
         }
     },
     "require-dev": {
-        "php-http/guzzle7-adapter": "^1.1"
+        "php-http/guzzle7-adapter": "^1.1",
+        "phpunit/phpunit": "^10.5"
     }
 }

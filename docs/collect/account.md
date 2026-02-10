@@ -1,18 +1,23 @@
 ### Account
 
-#### Create Purchase
-
-New purchase can be created by following code
-
-Refer: [Create Purchase](https://docs.chip-in.asia/chip-collect/api-reference/purchases/create)
+#### Balance
 
 ```
-$response = $collect->create([
-    "client" => [
-        "email" => "test@test.com",
-    ],
-    ...
-])
+$response = $collect->account()->balance([
+    "from" => "2024-01-01",
+    "to" => "2024-01-31",
+]);
+
+$response->toArray();
+```
+
+#### Turnover
+
+```
+$response = $collect->account()->turnover([
+    "from" => "2024-01-01",
+    "to" => "2024-01-31",
+]);
 
 $response->toArray();
 ```

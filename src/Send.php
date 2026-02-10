@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Chip;
 
-use Http\Client\Common\HttpMethodsClient as HttpClient;
+use Http\Client\Common\HttpMethodsClientInterface as HttpClient;
 
 class Send extends \Laravie\Codex\Client
 {
