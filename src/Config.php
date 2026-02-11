@@ -6,13 +6,24 @@ namespace Chip;
 
 final class Config
 {
+    public string $apiKey;
+    public ?string $apiSecret;
+    public ?string $baseUri;
+    public ?string $version;
+    public bool $sandbox;
+
     public function __construct(
-        public string $apiKey,
-        public ?string $apiSecret = null,
-        public ?string $baseUri = null,
-        public ?string $version = null,
-        public bool $sandbox = false
+        string $apiKey,
+        ?string $apiSecret = null,
+        ?string $baseUri = null,
+        ?string $version = null,
+        bool $sandbox = false
     ) {
+        $this->apiKey = $apiKey;
+        $this->apiSecret = $apiSecret;
+        $this->baseUri = $baseUri;
+        $this->version = $version;
+        $this->sandbox = $sandbox;
     }
 
     public static function collect(string $apiKey): self

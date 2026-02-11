@@ -25,7 +25,7 @@ class Collect extends \Laravie\Codex\Client
 
     public function __construct(
         HttpClient $http,
-        Config $config,
+        Config $config
     ) {
         $this->http = $http;
         $this->apiKey = $config->apiKey;

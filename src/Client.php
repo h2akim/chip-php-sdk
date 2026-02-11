@@ -9,14 +9,20 @@ use Laravie\Codex\Discovery;
 
 class Client
 {
-    public static function makeCollect(string|Config $apiKey, ?HttpMethodsClientInterface $httpClient = null): Collect
+    /**
+     * @param string|Config $apiKey
+     */
+    public static function makeCollect($apiKey, ?HttpMethodsClientInterface $httpClient = null): Collect
     {
         $config = $apiKey instanceof Config ? $apiKey : Config::collect($apiKey);
         return new Collect($httpClient ?? Discovery::client(), $config);
     }
 
+    /**
+     * @param string|Config $apiKey
+     */
     public static function makeSend(
-        string|Config $apiKey,
+        $apiKey,
         ?string $apiSecret = null,
         ?HttpMethodsClientInterface $httpClient = null
     ): Send
