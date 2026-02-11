@@ -22,12 +22,10 @@
     "require": {
         "php": "^8.2",
         "json-mapper/json-mapper": "^2.22",
-        
         "symfony/http-client": "^7.2",
-        
         "spatie/ray": "^1.41",
-        "laravie/codex": "^5.3",
-        "laravie/codex-filter": "^1.2"
+        "laravie/codex": "^6.2",
+        "laravie/codex-filter": "^2.1"
     },
     "config": {
         "allow-plugins": {
@@ -37,5 +35,23 @@
     "require-dev": {
         "php-http/guzzle7-adapter": "^1.1",
         "phpunit/phpunit": "^10.5"
+    },
+    "repositories": {
+        "laravie/codex": {
+            "type": "vcs",
+            "url": "git@github.com:h2akim/codex.git"
+        },
+        "laravie/codex-filter": {
+            "type": "vcs",
+            "url": "git@github.com:h2akim/codex-filter.git"
+        },
+        "laravie/codex-security": {
+            "type": "vcs",
+            "url": "git@github.com:h2akim/codex-security.git"
+        },
+        "laravie/codex-common": {
+            "type": "vcs",
+            "url": "git@github.com:h2akim/codex-common.git"
+        }
     }
 }
